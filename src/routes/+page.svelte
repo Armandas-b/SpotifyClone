@@ -52,7 +52,7 @@
 <!-- svelte-ignore a11y-missing-attribute -->
 <html>
 <body>
-
+<div class='player'>
 <img src='https://source.unsplash.com/random/500x500/?music/' />
 <div class='musicPlayer'>
     <AudioPlayer src={currentAudio} playing={playing} />
@@ -62,7 +62,7 @@
     <button on:click={playing ? pause : play}>{playing ? 'Pause' : 'Play'}</button>
     <button on:click={next}>Next</button>
 </div>
-
+</div>
 </body>
 </html>
 
@@ -97,5 +97,12 @@
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+    .player{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: grey;
     }
 </style>
