@@ -7,12 +7,4 @@ const config = {
 	}
 };
 
-// svelte.config.js
-export default {
-	kit: {
-	  adapter: adapter({
-		edge: false,
-		split: true
-	  })
-	}
-  };
+export default config;
