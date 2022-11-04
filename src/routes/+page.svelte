@@ -13,7 +13,10 @@
     let playing = false
     let currentAudio = audio[current]
     let Name = ['Strauss', 'Holst', 'Satie', 'Piano', 'Pokemon']
+    let coverName = ['Classical', 'Beethoven' , 'DnB', 'Piano' , 'Pokemon' ]
+    let CurrentCoverName = coverName[current]
     let CurrentSongName = Name[current]
+    $: AudioCover = CurrentCoverName
 
     function play() {
         playing = true
@@ -40,6 +43,7 @@
         current = (current + 1) % audio.length
         currentAudio = audio[current]
         CurrentSongName = Name[current]
+        CurrentCoverName = coverName[current]
         play()
     }
 
@@ -47,6 +51,7 @@
         current = (current - 1 + audio.length) % audio.length
         currentAudio = audio[current]
         CurrentSongName = Name[current]
+        CurrentCoverName = coverName[current]
         play()
     }
     function getRandomInt(max) {
@@ -56,16 +61,18 @@
         current = (getRandomInt(audio.length))
         currentAudio = audio[current]
         CurrentSongName = Name[current]
+        CurrentCoverName = coverName[current]
         play()
     }
+
     
 </script>
 <!-- svelte-ignore a11y-missing-attribute -->
 <html>
 <body>
 <div class='player'>
-<img src='https://source.unsplash.com/random/500x500/?music/' />
-<h1>{CurrentSongName}</h1>
+<img class='musicCover'src='https://source.unsplash.com/random/500x500/?{AudioCover}' />
+<h1 class="songName">{CurrentSongName}</h1>
 <div class='musicPlayer'>
     <AudioPlayer src={currentAudio} playing={playing} />
 </div>
@@ -81,11 +88,11 @@
 
 
 <style>
-    body {
+    /* body {
     height: 100vh;
     overflow: hidden;
     background: linear-gradient(to bottom right, #b968c5, skyblue);
-    }
+    } */
   
     button {
         /* center */
@@ -97,9 +104,6 @@
         cursor: pointer;
     }
 
-    div {
-      background-color: grey;
-    }
     .musicPlayer {
 
         display: flex;
@@ -112,10 +116,26 @@
         align-items: center;
     }
     .player{
+        width: 100%-10;
+        height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-color: grey;
+        background-color: green;
+        border: #000 solid 10px;
+    }
+    .musicCover {
+        width: 500px;
+        height: 500px;
+        border: 15px solid black;
+        border-radius: 50%;
+    }
+    .songName {
+        font-size: 50px;
+        color: black;
+        background-color: white;
+        border: 5px solid black;
+        border-radius: 20px;
     }
 </style>
