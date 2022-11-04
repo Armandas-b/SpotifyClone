@@ -86,6 +86,7 @@
     <div>
         <div style="width: {progress}%; background-color: #000; height: 5px;"></div>
     </div>
+    <div class="buttonCluster">
     <button on:click={prev}>
         Prev
     </button>
@@ -101,6 +102,7 @@
     <button on:click={next}>
         Next
     </button>
+    </div>
 </div>
 </body>
 </html>
@@ -115,11 +117,6 @@
   
     button {
         /* center */
-        display: block;
-        margin: 0 auto;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        padding: 10px;
         border-radius: 5px;
         border: 1px solid #000;
         background-color: #fff;
@@ -133,6 +130,11 @@
     }
     .musicPlayer {
 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .buttonCluster{
         display: flex;
         justify-content: center;
         align-items: center;
