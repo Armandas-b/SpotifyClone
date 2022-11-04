@@ -78,7 +78,7 @@
 <html>
 <body>
 
-<div>
+<div class='musicPlayer'>
     <AudioPlayer src={currentAudio} playing={playing} />
 </div>
 <div>
@@ -108,32 +108,33 @@
 
 <style>
     body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
     overflow: hidden;
     background: linear-gradient(to bottom right, #b968c5, skyblue);
     }
   
     button {
-      font-size: 1.5em;
-      padding: 0.5em 1em;
-      margin: 1em;
-        border: none;
+        /* center */
+        display: block;
+        margin: 0 auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 10px;
         border-radius: 5px;
-        background-color: black;
-        color: white;
-    }
-  
-    div {
-      background-color: grey;
-      margin: 1em;
+        border: 1px solid #000;
+        background-color: #fff;
+        font-size: 20px;
+        font-weight: bold;
+        cursor: pointer;
     }
 
-    .progress {
-        width: 100%;
-        height: 10px;
-        background-color: white;
+    div {
+      background-color: grey;
+    }
+    .musicPlayer {
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 </style>
