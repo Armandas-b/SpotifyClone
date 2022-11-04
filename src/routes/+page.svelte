@@ -10,6 +10,8 @@
     let current = 0
     let playing = false
     let currentAudio = audio[current]
+    let Name = ['Strauss', 'Holst', 'Satie']
+    let CurrentSongName = Name[current]
 
     function play() {
         playing = true
@@ -35,31 +37,40 @@
     function next() {
         current = (current + 1) % audio.length
         currentAudio = audio[current]
+        CurrentSongName = Name[current]
         play()
     }
 
     function prev() {
         current = (current - 1 + audio.length) % audio.length
         currentAudio = audio[current]
+        CurrentSongName = Name[current]
         play()
     }
-
-    function onended() {
-        next()
-
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * Math.floor(audio.length));
     }
+    function shuffle() {
+        current = (getRandomInt(audio.length))
+        currentAudio = audio[current]
+        CurrentSongName = Name[current]
+        play()
+    }
+    
 </script>
 <!-- svelte-ignore a11y-missing-attribute -->
 <html>
 <body>
 <div class='player'>
 <img src='https://source.unsplash.com/random/500x500/?music/' />
+<h1>{CurrentSongName}</h1>
 <div class='musicPlayer'>
     <AudioPlayer src={currentAudio} playing={playing} />
 </div>
 <div class='controls'>
     <button on:click={prev}>Prev</button>
     <button on:click={playing ? pause : play}>{playing ? 'Pause' : 'Play'}</button>
+    <button on:click={shuffle}>shuffle</button>
     <button on:click={next}>Next</button>
 </div>
 </div>
