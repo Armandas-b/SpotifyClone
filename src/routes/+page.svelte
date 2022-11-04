@@ -48,62 +48,21 @@
         next()
 
     }
-
-    // progress bar of the music 
-
-    let progress = 0
-
-    function ontimeupdate() {
-        const player = document.querySelector('audio')
-        progress = player.currentTime / player.duration * 100
-    }
-
-    function onseeking() {
-        const player = document.querySelector('audio')
-        player.currentTime = player.duration * progress / 100
-    }
-
-    function onseeked() {
-        const player = document.querySelector('audio')
-        player.currentTime = player.duration * progress / 100
-    }
-
-    function onprogress() {
-        const player = document.querySelector('audio')
-        progress = player.currentTime / player.duration * 100
-    }
-
 </script>
 <!-- svelte-ignore a11y-missing-attribute -->
 <html>
 <body>
 
+<img src='https://source.unsplash.com/random/500x500/?music/' />
 <div class='musicPlayer'>
     <AudioPlayer src={currentAudio} playing={playing} />
 </div>
-<div>
-    <!-- progress bar for music -->
-    <div>
-        <div style="width: {progress}%; background-color: #000; height: 5px;"></div>
-    </div>
-    <div class="buttonCluster">
-    <button on:click={prev}>
-        Prev
-    </button>
-    <button on:click={play}>
-        Play
-
-    </button>
-    <button on:click={pause}>
-        Pause
-
-    </button>
-
-    <button on:click={next}>
-        Next
-    </button>
-    </div>
+<div class='controls'>
+    <button on:click={prev}>Prev</button>
+    <button on:click={playing ? pause : play}>{playing ? 'Pause' : 'Play'}</button>
+    <button on:click={next}>Next</button>
 </div>
+
 </body>
 </html>
 
@@ -134,7 +93,7 @@
         justify-content: center;
         align-items: center;
     }
-    .buttonCluster{
+    .controls {
         display: flex;
         justify-content: center;
         align-items: center;
