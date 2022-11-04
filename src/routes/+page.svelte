@@ -5,12 +5,13 @@
     let audio = [
         'https://sveltejs.github.io/assets/music/strauss.mp3'
         , 'https://sveltejs.github.io/assets/music/holst.mp3'
-        , 'https://sveltejs.github.io/assets/music/satie.mp3']
+        , 'https://sveltejs.github.io/assets/music/satie.mp3'
+    ,'https://audio-previews.elements.envatousercontent.com/files/275650505/preview.mp3?response-content-disposition=attachment%3B+filename%3D%22EYZKVKN-the-sad-minimal-piano-background.mp3%22']
     
     let current = 0
     let playing = false
     let currentAudio = audio[current]
-    let Name = ['Strauss', 'Holst', 'Satie']
+    let Name = ['Strauss', 'Holst', 'Satie', 'Piano']
     let CurrentSongName = Name[current]
 
     function play() {
